@@ -26,10 +26,10 @@ void FreeEnergy(double **w, double **phi, double *eta, int *Ns, double ds, doubl
     
     iter=0;
     std::ofstream outputFile1("./results/fE.dat");
-    //std::ofstream outputFile2("./results/fE_R.dat");
+    std::ofstream outputFile2("./results/fE_R.dat");
     
-    /*for (radius=0;radius<100;radius++){
-        volume=vol(dr);*/
+    for (radius=0;radius<100;radius++){
+        volume=vol(dr);
     for (iter=0;iter<maxIter;iter++){
         
         fE_int=0.0;
@@ -70,10 +70,10 @@ void FreeEnergy(double **w, double **phi, double *eta, int *Ns, double ds, doubl
         oldfE=currentfE;
         currentfE=-fES+fE_int;
         
-        if (fabs(currentfE)>1e3){
+       /* if (fabs(currentfE)>1e3){
             cout<<"fE too large"<<endl;
             exit(EXIT_FAILURE);
-        }
+        }*/
         deltafE=fabs(currentfE-oldfE);
         
         //Print free energy, difference in free energy, change in omega field to screen
@@ -84,14 +84,14 @@ void FreeEnergy(double **w, double **phi, double *eta, int *Ns, double ds, doubl
         if (deltafE<precision && deltaW<precision){break;} //Convergence condition
         
     }
-     /*   r_0+=1.0;
+        r_0+=1.0;
         outputFile2 << r_0 << " "<<currentfE-fE_hom<<std::endl;
         
         
-    }*/
+    }
     
     outputFile1.close();
-    //outputFile2.close();
+    outputFile2.close();
     
     destroy_1d_double_array(delphi);
     destroy_2d_double_array(delW);

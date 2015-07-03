@@ -93,10 +93,10 @@ void phi_calc(double **phi,double **qA1,double **qdagA1,double **qB1,double **qd
         //phiA2 integration
         for(s=0;s<(int)Ns[0]+1;s++){
             if(s==0 || s==(int)Ns[0]){
-                phi[2][i]+=0.5*qA2[i][s]*qA2[i][Ns[0]-s]*ds;
+                phi[2][i]+=0.5*qA2[i][s]*qA3[i][Ns[0]-s]*ds;
             }
             else{
-                phi[2][i]+=qA2[i][s]*qA2[i][Ns[0]-s]*ds;
+                phi[2][i]+=qA2[i][s]*qA3[i][Ns[0]-s]*ds;
             }
         }
         
@@ -113,10 +113,10 @@ void phi_calc(double **phi,double **qA1,double **qdagA1,double **qB1,double **qd
         //phiA3 integration
         for(s=0;s<(int)Ns[0]+1;s++){
             if(s==0 || s==(int)Ns[0]){
-                phi[4][i]+=0.5*qA3[i][s]*qA3[i][Ns[0]-s]*ds;
+                phi[4][i]+=0.5*qA3[i][s]*qA2[i][Ns[0]-s]*ds;
             }
             else{
-                phi[4][i]+=qA3[i][s]*qA3[i][Ns[0]-s]*ds;
+                phi[4][i]+=qA3[i][s]*qA2[i][Ns[0]-s]*ds;
             }
         }
         
