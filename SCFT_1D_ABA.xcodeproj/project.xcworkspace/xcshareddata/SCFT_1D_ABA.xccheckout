@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>2482D56F-1547-4D75-9B28-6CDB82FDB13C</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SCFT_1D_ABA</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>F1A8BD89E3B5A57DC20E3BB674D55BB0DD09912B</key>
+		<string>https://github.com/xurui1/SCFT_1D_ABA.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SCFT_1D_ABA.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>F1A8BD89E3B5A57DC20E3BB674D55BB0DD09912B</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/xurui1/SCFT_1D_ABA.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>F1A8BD89E3B5A57DC20E3BB674D55BB0DD09912B</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F1A8BD89E3B5A57DC20E3BB674D55BB0DD09912B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SCFT_1D_ABA</string>
+		</dict>
+	</array>
+</dict>
+</plist>

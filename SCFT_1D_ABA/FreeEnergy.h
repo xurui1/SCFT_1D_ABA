@@ -9,6 +9,7 @@ void FreeEnergy(double **w, double **phi, double *eta, int *Ns, double ds, doubl
     double  fE_int, fES;            //interaction free energy and chain partition function fE
     double  epsilon, gamma;
     double  *delphi;
+    double *sigma;
     double  **delW;
     double  **newW;
     double  deltaW;
@@ -16,6 +17,7 @@ void FreeEnergy(double **w, double **phi, double *eta, int *Ns, double ds, doubl
     //Arrays for updating the omega fields
     delW=create_2d_double_array(ChainType,Nr,"delW");
     delphi=create_1d_double_array(Nr,"delphi");
+    sigma=create_1d_double_array(Nr,"sigma");
     newW=create_2d_double_array(ChainType,Nr,"newW");
     
     currentfE=0.0;
@@ -28,8 +30,8 @@ void FreeEnergy(double **w, double **phi, double *eta, int *Ns, double ds, doubl
     std::ofstream outputFile1("./results/fE.dat");
     std::ofstream outputFile2("./results/fE_R.dat");
     
-    for (radius=0;radius<100;radius++){
-        volume=vol(dr);
+    /*for (radius=0;radius<100;radius++){
+        volume=vol(dr);*/
     for (iter=0;iter<maxIter;iter++){
         
         fE_int=0.0;
@@ -42,6 +44,7 @@ void FreeEnergy(double **w, double **phi, double *eta, int *Ns, double ds, doubl
         
         Incomp(eta,phi,delphi);              //Enforce incompressibility condition
         output(dr,phi,w);                   //Output some data to file
+        Pin(sigma, phi);
     
         
 
@@ -54,6 +57,12 @@ void FreeEnergy(double **w, double **phi, double *eta, int *Ns, double ds, doubl
                     newW[ii][i]+=(chiMatrix[ii][jj]*phi[jj][i]);
                 }
                 newW[ii][i]+=eta[i];
+                if (ii==0 || ii == 2 || ii==4){
+                    newW[ii][i]-=sigma[i];
+                }
+                else if (ii==1 || ii==3){
+                    newW[ii][i]+=sigma[i];
+                }
                 delW[ii][i]=newW[ii][i]-w[ii][i];
                 w[ii][i]+=(gamma*delW[ii][i]-epsilon*delphi[i]);     //update omega field
                 deltaW+=fabs(delW[ii][i])*dV(i,dr);
@@ -84,11 +93,11 @@ void FreeEnergy(double **w, double **phi, double *eta, int *Ns, double ds, doubl
         if (deltafE<precision && deltaW<precision){break;} //Convergence condition
         
     }
-        r_0+=1.0;
+    /*    r_0+=1.0;
         outputFile2 << r_0 << " "<<currentfE-fE_hom<<std::endl;
         
         
-    }
+    }*/
     
     outputFile1.close();
     outputFile2.close();

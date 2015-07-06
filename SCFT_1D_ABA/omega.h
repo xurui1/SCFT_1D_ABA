@@ -19,10 +19,17 @@ void omega(double **w){
     //This is for a bilayer conformation
     else if (initial==1){
         ifstream Init1;
-        Init1.open("bilayer_M50_N50.dat");
+        Init1.open("bilayer_N50.dat");
         for (i=0;i<Nr;i++){
-                Init1 >> x >> w[0][i]>>w[1][i]>>w[2][i];
+                Init1 >> x >> w[0][i]>>w[1][i]>>w[5][i];
         }
+        
+        for (i=0;i<Nr;i++){
+            w[2][i]=w[0][i];
+            w[3][i]=w[1][i];
+            w[4][i]=w[4][i];
+        }
+        
         Init1.close();
     }
     

@@ -24,3 +24,21 @@ void Incomp(double *eta, double **phi, double *delphi){
         }
     }
 }
+
+
+void Pin(double *sigma,double **phi){
+    
+    int Ntip;
+    int i;
+    
+    Ntip=2*Nr/5;
+    
+    for (i=0;i<Nr;i++){
+        if (i==Ntip){
+            sigma[i]=sigma[i]-10.0*(phi[0][i]+phi[2][i]+phi[4][i]-phi[1][i]-phi[3][i]);
+        }
+        else{
+            sigma[i]=0.0;
+        }
+    }
+}
