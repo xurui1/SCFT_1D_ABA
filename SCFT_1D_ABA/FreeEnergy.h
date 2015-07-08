@@ -1,10 +1,17 @@
+string IntToStr(int n)
+{
+    stringstream result;
+    result << n;
+    return result.str();
+}
+
 void FreeEnergy(double **w, double **phi, double *eta, int *Ns, double ds, double *chi, double dr, double **chiMatrix, double *mu, double fE_hom, double volume){
     
     
     double  currentfE, oldfE, deltafE;
-    int     maxIter=10000;
+    int     maxIter=100000;
     double precision=1e-5;          //convergence condition
-    int     i,iter,ii,jj,radius;
+    int     i,x,iter,ii,jj,radius;
     double  Q;
     double  fE_int, fES;            //interaction free energy and chain partition function fE
     double  epsilon, gamma;
@@ -29,9 +36,13 @@ void FreeEnergy(double **w, double **phi, double *eta, int *Ns, double ds, doubl
     iter=0;
     std::ofstream outputFile1("./results/fE.dat");
     std::ofstream outputFile2("./results/fE_R.dat");
+    std::ofstream outputFile3("./results/fE_Chi.dat");
+    
+    for (x=0;i<30;x++){
     
     /*for (radius=0;radius<100;radius++){
-        volume=vol(dr);*/
+        volume=vol(dr);
+        if (radius>1){omega(w);}*/
     for (iter=0;iter<maxIter;iter++){
         
         fE_int=0.0;
@@ -93,14 +104,40 @@ void FreeEnergy(double **w, double **phi, double *eta, int *Ns, double ds, doubl
         if (deltafE<precision && deltaW<precision){break;} //Convergence condition
         
     }
-    /*    r_0+=1.0;
-        outputFile2 << r_0 << " "<<currentfE-fE_hom<<std::endl;
         
+    /*************************Loop for determining fE as f(Chi)***************************************/
+        outputFile3 << x <<" "<<chi[0]<<" "<< chi[1]<<" "<<chi[2]<<std::endl;
+        chi[0]-=1.0;
+        chi[1]-=1.0;
+        Xmatrix(chiMatrix,chi);
+    }
+    /**************************************************************************************************/
+    
+    
+    /**************************Loop for determining fE as f(radius)***********************************/
+     /*  outputFile2 << r_0 << " "<<currentfE-fE_hom<<std::endl;
+        //create name
+        ofstream outFile;
+        string filename;
+        filename="./results/phi_r_" + IntToStr(radius) + ".dat"; // C++11 for std::to_string
+        //create file
+        outFile.open(filename.c_str());
+        
+        for (i=0;i<Nr;i++){
+            outFile <<i*dr<<" "<<phi[0][i]<<" "<<phi[1][i]<<" "<<phi[2][i]<<" "<<phi[3][i]<<" "<<phi[4][i]<<" "<<phi[5][i]<<std::endl;;
+        }
+        outFile.close();
+        
+        r_0+=1.0;
         
     }*/
-    
+    /**************************************************************************************************/
+      
+      
     outputFile1.close();
     outputFile2.close();
+    outputFile3.close();
+    
     
     destroy_1d_double_array(delphi);
     destroy_2d_double_array(delW);

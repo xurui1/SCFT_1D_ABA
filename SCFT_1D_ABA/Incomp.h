@@ -31,7 +31,7 @@ void Pin(double *sigma,double **phi){
     int Ntip;
     int i;
     
-    Ntip=2*Nr/5;
+    Ntip=2*Nr/5-1;
     
     for (i=0;i<Nr;i++){
         if (i==Ntip){

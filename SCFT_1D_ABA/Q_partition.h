@@ -26,9 +26,9 @@ double q_partition(double **qB1,double **qA3,double **qC, double dr, int *Ns, do
     }
     
     Q_AB=exp(mu[0])*Q_AB;
-    Q_ABA=exp(mu[1])*Q_ABA;
+    Q_ABA=exp(mu[1]*2.0)*Q_ABA/2.0;
     Q_C=(exp(mu[2]*kappa)*Q_C)/kappa;
-    //I'm adding the two single chain partition functions together for the return function
+    //I'm adding the three single chain partition functions together for the return function
     Q=Q_AB+Q_C+Q_ABA;
     // Normalizing with respect to box volume
     Q/=volume;

@@ -50,9 +50,11 @@ int main( ){
     
     //Set parameters
     parameters(chi,f,&ds,Ns,&dr,chiMatrix,mu);
+    Xmatrix(chiMatrix);
     volume=vol(dr);
     
     //Calculate homogeneous free energy
+    //fE_hom=homofE(chiMatrix);
     fE_hom=homogfE(mu,chiMatrix,f);
     
     //Set up initial omega field

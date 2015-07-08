@@ -1,6 +1,8 @@
 #include <stdio.h>     //Include the standard input/output libraries
 #include <iostream>  //Cout and Cin etc.
 #include <fstream>
+#include <sstream>
+#include <string>
 #include <stdlib.h>    //Include standard fucntion libraries
 #include <math.h>      //Use the math function libraries
 #include <time.h>      //Call system time libraries to define the integer seed for random numbers

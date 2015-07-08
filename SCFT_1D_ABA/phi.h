@@ -134,9 +134,9 @@ void phi_calc(double **phi,double **qA1,double **qdagA1,double **qB1,double **qd
             //Grand canonical relation
             phi[0][i]=exp(mu[0])*phi[0][i];
             phi[1][i]=exp(mu[0])*phi[1][i];
-            phi[2][i]=exp(mu[1])*phi[2][i];
-            phi[3][i]=exp(mu[1])*phi[3][i];
-            phi[4][i]=exp(mu[1])*phi[4][i];
+            phi[2][i]=exp(2.0*mu[1])*phi[2][i]/2.0;
+            phi[3][i]=exp(2.0*mu[1])*phi[3][i]/2.0;
+            phi[4][i]=exp(2.0*mu[1])*phi[4][i]/2.0;
             phi[5][i]=exp((mu[2])*kappa)*phi[5][i]*(1.0/kappa);
     }
     
