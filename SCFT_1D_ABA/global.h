@@ -11,7 +11,7 @@
 
 using namespace std;
 
-#define Nr 50
+#define Nr 100
 #define ChainType 6
 #define Pi 3.14159
 

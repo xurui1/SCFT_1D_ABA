@@ -4,7 +4,7 @@ void parameters(double *chi,double *f,double *ds,int *Ns,double *dr,double *mu){
     r_0=1.0;
     double delr;
     
-    initial=1;
+    initial=2;
     Coord=1; //if 1->Cartesian, if 2->Cylindrical, if 3->Spherical coordinate system
     
     //Length ratio of c homopolymer to diblock copolymer
@@ -33,7 +33,7 @@ void parameters(double *chi,double *f,double *ds,int *Ns,double *dr,double *mu){
     //cout<<Ns[0]<<" "<<Ns[1]<<" "<<Ns[2]<<endl;
     
     //Step size in r,z direction
-    *dr=0.24;
+    *dr=0.12;
     delr=*dr;
     
     

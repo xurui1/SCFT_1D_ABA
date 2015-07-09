@@ -16,7 +16,7 @@ void omega(double **w){
     }
     
     
-    //This is for a bilayer conformation
+    //This is for a bilayer conformation with 50 points
     else if (initial==1){
         ifstream Init1;
         Init1.open("bilayer_N50.dat");
@@ -31,6 +31,22 @@ void omega(double **w){
         }
         
         Init1.close();
+    }
+    //This is for a bilayer conformation with 100 points
+    else if (initial==2){
+        ifstream Init2;
+        Init2.open("bilayer_N100.dat");
+        for (i=0;i<Nr;i++){
+            Init2 >> x >> w[0][i]>>w[1][i]>>w[5][i];
+        }
+        
+        for (i=0;i<Nr;i++){
+            w[2][i]=w[0][i];
+            w[3][i]=w[1][i];
+            w[4][i]=w[4][i];
+        }
+        
+        Init2.close();
     }
     
     for (i=0;i<Nr;i++){
