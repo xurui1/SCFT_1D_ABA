@@ -4,21 +4,21 @@ void parameters(double *chi,double *f,double *ds,int *Ns,double *dr,double *mu){
     r_0=1.0;
     double delr;
     
-    initial=0;
+    initial=1;
     Coord=1; //if 1->Cartesian, if 2->Cylindrical, if 3->Spherical coordinate system
     
     //Length ratio of c homopolymer to diblock copolymer
     kappa=1.0;
         
     //Interaction parameters
-    chi[0]=30.0;        //Chi_AB
-    chi[1]=30.0;        //Chi_BC
+    chi[0]=25.0;        //Chi_AB
+    chi[1]=25.0;        //Chi_BC
     chi[2]=0.0;         //Chi_AC
     
     //Chemical potential array
-    mu[0]=-20.0;      //AB
-    mu[1]=0.0;      //ABA
-    mu[2]=-20.0;    //C
+    mu[0]=0.0;      //AB
+    mu[1]=-20.0;      //ABA
+    mu[2]=-4.25;    //C
     
     //Chain fraction array
     f[0]=0.5;       //A
@@ -33,7 +33,7 @@ void parameters(double *chi,double *f,double *ds,int *Ns,double *dr,double *mu){
     //cout<<Ns[0]<<" "<<Ns[1]<<" "<<Ns[2]<<endl;
     
     //Step size in r,z direction
-    *dr=0.08;
+    *dr=0.24;
     delr=*dr;
     
     

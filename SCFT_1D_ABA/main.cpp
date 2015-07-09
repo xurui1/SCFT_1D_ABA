@@ -12,8 +12,8 @@
 #include "Incomp.h"
 #include "output.h"
 #include "fE.h"
-#include "FreeEnergy.h"
 #include "homogfE.h"
+#include "FreeEnergy.h"
 
 
 
@@ -49,8 +49,8 @@ int main( ){
     srand48(iseed);
     
     //Set parameters
-    parameters(chi,f,&ds,Ns,&dr,chiMatrix,mu);
-    Xmatrix(chiMatrix);
+    parameters(chi,f,&ds,Ns,&dr,mu);
+    Xmatrix(chiMatrix,chi);
     volume=vol(dr);
     
     //Calculate homogeneous free energy
@@ -61,7 +61,7 @@ int main( ){
     omega(w);
     
     //SCFT
-    FreeEnergy(w,phi,eta,Ns,ds,chi,dr,chiMatrix,mu,fE_hom,volume);
+    FreeEnergy(w,phi,eta,Ns,ds,chi,dr,chiMatrix,mu,fE_hom,volume,f);
     
     //Destroy memory allocations------------
     destroy_2d_double_array(w);

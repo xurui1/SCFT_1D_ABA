@@ -5,13 +5,14 @@ string IntToStr(int n)
     return result.str();
 }
 
-void FreeEnergy(double **w, double **phi, double *eta, int *Ns, double ds, double *chi, double dr, double **chiMatrix, double *mu, double fE_hom, double volume){
+void FreeEnergy(double **w, double **phi, double *eta, int *Ns, double ds, double *chi, double dr, double **chiMatrix, double *mu, double fE_hom, double volume, double *f){
     
     
     double  currentfE, oldfE, deltafE;
     int     maxIter=100000;
     double precision=1e-5;          //convergence condition
     int     i,x,iter,ii,jj,radius;
+    int     mmb;
     double  Q;
     double  fE_int, fES;            //interaction free energy and chain partition function fE
     double  epsilon, gamma;
@@ -34,11 +35,12 @@ void FreeEnergy(double **w, double **phi, double *eta, int *Ns, double ds, doubl
     gamma=0.05;
     
     iter=0;
+    mmb=1;
     std::ofstream outputFile1("./results/fE.dat");
     std::ofstream outputFile2("./results/fE_R.dat");
     std::ofstream outputFile3("./results/fE_Chi.dat");
     
-    for (x=0;i<30;x++){
+    /*for (x=0;x<25;x++){*/
     
     /*for (radius=0;radius<100;radius++){
         volume=vol(dr);
@@ -55,8 +57,10 @@ void FreeEnergy(double **w, double **phi, double *eta, int *Ns, double ds, doubl
         
         Incomp(eta,phi,delphi);              //Enforce incompressibility condition
         output(dr,phi,w);                   //Output some data to file
-        Pin(sigma, phi);
-    
+        
+        if (mmb==1){
+            Pin(sigma, phi);
+        }
         
 
         
@@ -68,11 +72,14 @@ void FreeEnergy(double **w, double **phi, double *eta, int *Ns, double ds, doubl
                     newW[ii][i]+=(chiMatrix[ii][jj]*phi[jj][i]);
                 }
                 newW[ii][i]+=eta[i];
-                if (ii==0 || ii == 2 || ii==4){
-                    newW[ii][i]-=sigma[i];
-                }
-                else if (ii==1 || ii==3){
-                    newW[ii][i]+=sigma[i];
+                
+                if (mmb==1){
+                    if (ii==0 || ii == 2 || ii==4){
+                        newW[ii][i]-=sigma[i];
+                    }
+                    else if (ii==1 || ii==3){
+                        newW[ii][i]+=sigma[i];
+                    }
                 }
                 delW[ii][i]=newW[ii][i]-w[ii][i];
                 w[ii][i]+=(gamma*delW[ii][i]-epsilon*delphi[i]);     //update omega field
@@ -106,11 +113,13 @@ void FreeEnergy(double **w, double **phi, double *eta, int *Ns, double ds, doubl
     }
         
     /*************************Loop for determining fE as f(Chi)***************************************/
-        outputFile3 << x <<" "<<chi[0]<<" "<< chi[1]<<" "<<chi[2]<<std::endl;
+    /*    outputFile3 << x <<" "<<chi[0]<<" "<< chi[1]<<" "<<chi[2]<<" "<<currentfE-fE_hom<<std::endl;
         chi[0]-=1.0;
         chi[1]-=1.0;
         Xmatrix(chiMatrix,chi);
-    }
+        fE_hom=homogfE(mu,chiMatrix,f);
+
+    }*/
     /**************************************************************************************************/
     
     
