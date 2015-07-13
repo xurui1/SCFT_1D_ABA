@@ -18,7 +18,7 @@ void parameters(double *chi,double *f,double *ds,int *Ns,double *dr,double *mu){
     //Chemical potential array
     mu[0]=0.0;      //AB
     mu[1]=-20.0;      //ABA
-    mu[2]=-4.25;    //C
+    mu[2]=-4.2612;    //C
     
     //Chain fraction array
     f[0]=0.5;       //A

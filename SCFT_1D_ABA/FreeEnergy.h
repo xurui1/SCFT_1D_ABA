@@ -124,7 +124,7 @@ void FreeEnergy(double **w, double **phi, double *eta, int *Ns, double ds, doubl
     
     
     /**************************Loop for determining fE as f(radius)***********************************/
-     /*  outputFile2 << r_0 << " "<<currentfE-fE_hom<<std::endl;
+    /*   outputFile2 << r_0 << " "<<currentfE-fE_hom<<std::endl;
         //create name
         ofstream outFile;
         string filename;
