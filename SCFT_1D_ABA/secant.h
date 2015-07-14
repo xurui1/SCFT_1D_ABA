@@ -1,5 +1,5 @@
 
-void secant(double **w, double **phi, double *eta, int *Ns, double ds, double *chi, double dr, double **chiMatrix, double *mu, double volume, double *f){
+void secant(double **w, double **phi, double *eta, int *Ns, double ds, double *chi, double dr, double **chiMatrix, double *mu, double *f){
     
     
     double  currentfE, oldfE, deltafE;
@@ -19,6 +19,7 @@ void secant(double **w, double **phi, double *eta, int *Ns, double ds, double *c
     double  **newW;
     double  deltaW;
     double fE_hom=0.0;
+    double volume;
     
     //Arrays for updating the omega fields
     delW=create_2d_double_array(ChainType,Nr,"delW");

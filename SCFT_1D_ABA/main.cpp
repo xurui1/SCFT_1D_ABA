@@ -33,8 +33,9 @@ int main( ){
     double dr;
     double volume;
     double **chiMatrix;
-    //double fE_hom;
-    //int secantmod;
+    double fE_hom;
+    int frac,radius;
+    double dfE;
     
     //secantmod=1;
     
@@ -56,21 +57,44 @@ int main( ){
     
     //Set parameters
     parameters(chi,f,&ds,Ns,&dr,mu);
+    //Set interaction matrix
     Xmatrix(chiMatrix,chi);
-    volume=vol(dr);
     
-    //Calculate homogeneous free energy
-    //fE_hom=homofE(chiMatrix);
-    //fE_hom=homogfE(mu,chiMatrix,f);
+    for (frac=0;frac<20;frac++){
+        fE_hom=homogfE(mu,chiMatrix,f);
+        secant(w,phi,eta,Ns,ds,chi,dr,chiMatrix,mu,f);
+        
+        ofstream outFile2;
+        string filename2;
+        filename2="./results/fe(r)_fA_" + DoubleToStr(f[0])+ ".dat";
+        outFile2.open(filename2.c_str());
+        
+        for (radius=0;radius<4;radius++){
+            volume=vol(dr);
+            omega(w);
     
-    //Set up initial omega field
-    omega(w);
-    
-    //Determine muC for tensionless membrane
-    //if (secantmod==1){secant(w,phi,eta,Ns,ds,chi,dr,chiMatrix,mu,volume,f);}
-    
-    //SCFT
-    FreeEnergy(w,phi,eta,Ns,ds,chi,dr,chiMatrix,mu,volume,f);
+            dfE=FreeEnergy(w,phi,eta,Ns,ds,chi,dr,chiMatrix,mu,volume,f);
+            
+            outFile2 <<f[0]<<" "<< r_0 << " "<<dfE<<std::endl;
+            
+            if (r_0<10){
+                r_0+=1.0;
+            }
+            else if (r_0<50){
+                r_0+=5.0;
+            }
+            else if (r_0<150){
+                r_0+=10.0;
+            }
+            else{
+                r_0+=25.0;
+            }
+            
+        }
+        f[0]+=0.01;
+        f[1]=1.0-f[0];
+        outFile2.close();
+    }
     
     //Destroy memory allocations------------
     destroy_2d_double_array(w);
