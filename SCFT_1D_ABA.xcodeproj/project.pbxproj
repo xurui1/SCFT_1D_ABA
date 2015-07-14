@@ -42,6 +42,8 @@
 		7923442C1B46FD8F002D64EF /* smemory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = smemory.h; sourceTree = "<group>"; };
 		7923442D1B470123002D64EF /* polymers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = polymers.h; sourceTree = "<group>"; };
 		793B5FC31B540FB5003EBC28 /* loop.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = loop.h; sourceTree = "<group>"; };
+		793B5FC41B553CED003EBC28 /* secant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = secant.h; sourceTree = "<group>"; };
+		793B5FC51B5584BB003EBC28 /* filename.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = filename.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,8 @@
 				792344171B46FD4A002D64EF /* main.cpp */,
 				7923442D1B470123002D64EF /* polymers.h */,
 				793B5FC31B540FB5003EBC28 /* loop.h */,
+				793B5FC41B553CED003EBC28 /* secant.h */,
+				793B5FC51B5584BB003EBC28 /* filename.h */,
 			);
 			path = SCFT_1D_ABA;
 			sourceTree = "<group>";

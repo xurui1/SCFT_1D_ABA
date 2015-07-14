@@ -9,11 +9,13 @@
 #include "Q_partition.h"
 #include "polymers.h"
 #include "loop.h"
-#include "Conc.h"
+#include "conc.h"
 #include "Incomp.h"
 #include "output.h"
 #include "fE.h"
 #include "homogfE.h"
+#include "filename.h"
+#include "secant.h"
 #include "FreeEnergy.h"
 
 
@@ -31,7 +33,10 @@ int main( ){
     double dr;
     double volume;
     double **chiMatrix;
-    double fE_hom;
+    //double fE_hom;
+    //int secantmod;
+    
+    //secantmod=1;
     
     //Allocate memory
     w=create_2d_double_array(ChainType,Nr,"w");          //Auxiliary potential fields
@@ -56,13 +61,16 @@ int main( ){
     
     //Calculate homogeneous free energy
     //fE_hom=homofE(chiMatrix);
-    fE_hom=homogfE(mu,chiMatrix,f);
+    //fE_hom=homogfE(mu,chiMatrix,f);
     
     //Set up initial omega field
     omega(w);
     
+    //Determine muC for tensionless membrane
+    //if (secantmod==1){secant(w,phi,eta,Ns,ds,chi,dr,chiMatrix,mu,volume,f);}
+    
     //SCFT
-    FreeEnergy(w,phi,eta,Ns,ds,chi,dr,chiMatrix,mu,fE_hom,volume,f);
+    FreeEnergy(w,phi,eta,Ns,ds,chi,dr,chiMatrix,mu,volume,f);
     
     //Destroy memory allocations------------
     destroy_2d_double_array(w);
