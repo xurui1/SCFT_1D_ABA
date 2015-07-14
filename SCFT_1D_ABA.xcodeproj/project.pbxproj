@@ -41,6 +41,7 @@
 		7923442B1B46FD7C002D64EF /* phi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = phi.h; sourceTree = "<group>"; };
 		7923442C1B46FD8F002D64EF /* smemory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = smemory.h; sourceTree = "<group>"; };
 		7923442D1B470123002D64EF /* polymers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = polymers.h; sourceTree = "<group>"; };
+		793B5FC31B540FB5003EBC28 /* loop.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = loop.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +91,7 @@
 				7923442B1B46FD7C002D64EF /* phi.h */,
 				792344171B46FD4A002D64EF /* main.cpp */,
 				7923442D1B470123002D64EF /* polymers.h */,
+				793B5FC31B540FB5003EBC28 /* loop.h */,
 			);
 			path = SCFT_1D_ABA;
 			sourceTree = "<group>";
@@ -267,6 +269,7 @@
 				7923441D1B46FD4A002D64EF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

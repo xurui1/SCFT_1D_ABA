@@ -8,6 +8,7 @@
 #include "phi.h"
 #include "Q_partition.h"
 #include "polymers.h"
+#include "loop.h"
 #include "Conc.h"
 #include "Incomp.h"
 #include "output.h"

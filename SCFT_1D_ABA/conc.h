@@ -28,12 +28,13 @@ double Conc(double **phi,double **w,int *Ns,double ds,double dr, double *mu,doub
         
     cout<<"Q: "<< Q<<endl;
     
-    // Here we do the concentration calculation by integration over box and chain
+    // Here we do the concentration calculation by integration over chain
     phi_calc(phi,qA1,qdagA1,qB1,qdagB1,qA2,qB2,qA3,qC,Ns,mu,ds);
 
     //calculation of average concentrations over entire computation box
     phi_total(phi,dr,volume);
     
+    loop(qA2,qA3,Ns,phi,volume,dr);
     
     
     //clearing the memory

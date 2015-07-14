@@ -35,7 +35,7 @@ void FreeEnergy(double **w, double **phi, double *eta, int *Ns, double ds, doubl
     gamma=0.05;
     
     iter=0;
-    mmb=1;
+    mmb=0;
     std::ofstream outputFile1("./results/fE.dat");
     std::ofstream outputFile2("./results/fE_R.dat");
     std::ofstream outputFile3("./results/fE_Chi.dat");
